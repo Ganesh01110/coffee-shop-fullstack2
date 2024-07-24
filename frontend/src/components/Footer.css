@@ -1,0 +1,27 @@
+:root{
+    --main-color:#d3ad7f;
+    --black:#13131a;
+    --bg:#010113;
+    --border:.1rem solid rgba(255,255,255,.3);
+
+}
+
+
+.footer .shar{
+    padding: 1rem 0;
+  }
+  
+  .footer .shar>i{
+    height: 25px;
+    width: 25px;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    border: var(--border);
+    border-radius: 50%;
+  }
+  
+  .footer .shar>i:hover{
+    background-color: var(--main-color);
+    scale: 1.2;
+  }
