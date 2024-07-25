@@ -3,6 +3,8 @@ const userModel = require("../../models/userModel")
 
 const paymentControllor=async(request,response)=>{
     try{
+
+        console.log("inside payment backend");
         const {cartItems} = request.body
         
 
