@@ -84,6 +84,14 @@ const SummaryApi = {
     QrPayment : {
         url : `${backendDomin}/api/generate-upi-url`,
         method : 'post'
+    },
+    getOrder : {
+        url : `${backendDomin}/api/order-list`,
+        method : 'get'
+    },
+    allOrder : {
+        url : `${backendDomin}/api/all-order`,
+        method : 'get'
     }
 }
 

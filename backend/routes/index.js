@@ -56,6 +56,10 @@ router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 
 //payment and order
 router.post('/checkout',authToken,paymentControllor)
+router.post('/webhook',webhooks) // /api/webhook
+router.get("/order-list",authToken,orderController)
+router.get("/all-order",authToken,allOrderController)
+
 
 router.post('/generate-upi-url',QrPayment);
 
