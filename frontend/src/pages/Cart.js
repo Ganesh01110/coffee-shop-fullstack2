@@ -115,29 +115,52 @@ const Cart = () => {
     }
   };
 
-  const handlePayment = async () => {
-    const stripePromise = await loadStripe(
-      process.env.REACT_APP_STRIPE_PUBLIC_KEY
-    );
-    const response = await fetch(SummaryApi.payment.url, {
-      method: SummaryApi.payment.method,
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        cartItems: data,
-      }),
-    });
+  // const handlePayment = async () => {
+  //   const stripePromise = await loadStripe(
+  //     process.env.REACT_APP_STRIPE_PUBLIC_KEY
+  //   );
+  //   const response = await fetch(SummaryApi.payment.url, {
+  //     method: SummaryApi.payment.method,
+  //     credentials: "include",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       cartItems: data,
+  //     }),
+  //   });
 
-    const responseData = await response.json();
+  //   const responseData = await response.json();
 
-    if (responseData?.id) {
-      stripePromise.redirectToCheckout({ sessionId: responseData.id });
+  //   if (responseData?.id) {
+  //     stripePromise.redirectToCheckout({ sessionId: responseData.id });
+  //   }
+
+  //   console.log("payment response", responseData);
+  // };
+
+  const handlePayment = async()=>{
+
+    const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+    const response = await fetch(SummaryApi.payment.url,{
+        method : SummaryApi.payment.method,
+        credentials : 'include',
+        headers : {
+            "content-type" : 'application/json'
+        },
+        body : JSON.stringify({
+            cartItems : data
+        })
+    })               
+
+    const responseData = await response.json()
+
+    if(responseData?.id){
+        stripePromise.redirectToCheckout({ sessionId : responseData.id})
     }
 
-    console.log("payment response", responseData);
-  };
+    console.log("payment response",responseData)
+}
 
   const totalQty = data.reduce(
     (previousValue, currentValue) => previousValue + currentValue.quantity,
